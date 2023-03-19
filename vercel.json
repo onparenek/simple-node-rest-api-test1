@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "simple-node-rest-api-test1",
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/server.js" }
+  ]
+}
