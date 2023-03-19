@@ -1,9 +1,9 @@
 const mysql = require('mysql')
-const config = require('../config')
+const config = require('../config.example')
 
 const connection = mysql.createConnection({
     host: config.HOST,
-    socketPath: config.SOCKET,
+    // socketPath: config.SOCKET,
     port: config.PORT,
     user: config.DBUSER,
     password: config.DBPASSWORD,
