@@ -1,17 +1,11 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 3500
-const bodyParser = require('body-parser')
-const passport = require('passport')
+const http = require('http');
 
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(bodyParser.json())
-app.use(passport.initialize())
-require('./middleware/passport')(passport)
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello, World!');
+});
 
-const routes = require('./settings/routes')
-routes(app)
-
-app.listen(port, () => {
-    console.log(`App listen on port ${port}`);
-})
+server.listen(process.env.PORT, () => {
+    console.log(`Server running at ${process.env.PORT}/`);
+});
