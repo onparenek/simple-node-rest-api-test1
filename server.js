@@ -13,12 +13,6 @@ require('./middleware/passport')(passport)
 const routes = require('./settings/routes')
 routes(app)
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello, World!');
-});
-
-server.listen(port, () => {
+app.listen(port, () => {
     console.log(`App listen on port ${port}`);
 })
