@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `second_name` text NOT NULL,
+  `last_name` text NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -32,7 +32,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `second_name`, `email`, `password`) VALUES
+INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `password`) VALUES
 (1, 'Alex', 'Alex', 'test@mail.ru', ''),
 (2, 'John', 'Homsted', 'john@mail.ru', ''),
 (3, 'Res', 'undefined', 'res@mail.ru', '123456'),

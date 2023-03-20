@@ -9,7 +9,7 @@ const config = require('../config.example')
 
 exports.getAllUsers = (req, res) => {
 
-    db.query('SELECT `id`, `name`, `second_name`, `email` FROM `users`', (error, rows, fields) => {
+    db.query('SELECT `id`, `name`, `last_name`, `email` FROM `users`', (error, rows, fields) => {
         if(error) {
             response.status(400, error, res)
         } else {
@@ -21,7 +21,7 @@ exports.getAllUsers = (req, res) => {
 
 exports.signup = (req, res) => {
 
-    db.query("SELECT `id`, `email`, `name` FROM `users` WHERE `email` = '" + req.body.email + "'", (error, rows, fields) => {
+    db.query("SELECT `id`, `email`, `first_name` FROM `users` WHERE `email` = '" + req.body.email + "'", (error, rows, fields) => {
         if(error) {
             response.status(400, error, res)
         } else if(typeof rows !== 'undefined' && rows.length > 0) {
@@ -33,12 +33,12 @@ exports.signup = (req, res) => {
         } else {
             const email = req.body.email
             const name = req.body.name
-            const secondName = req.body.second_name !== '' ? req.body.second_name : 'Не указано'
+            const lastName = req.body.last_name !== '' ? req.body.last_name : 'Не указано'
 
             const salt = bcrypt.genSaltSync(15)
             const password = bcrypt.hashSync(req.body.password, salt)
 
-            const sql = "INSERT INTO `users`(`name`, `second_name`, `email`, `password`) VALUES('" + name + "', '" + secondName + "', '" + email + "', '" + password + "')";
+            const sql = "INSERT INTO `users`(`first_name`, `last_name`, `email`, `password`) VALUES('" + name + "', '" + lastName + "', '" + email + "', '" + password + "')";
             db.query(sql, (error, results) => {
                 if(error) {
                     response.status(400, error, res)
